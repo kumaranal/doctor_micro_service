@@ -1,0 +1,30 @@
+version: "3.8"
+
+services:
+  user-services:
+    build: ./user-services
+    ports:
+      - "5001:5001"
+    networks:
+      - my-network
+
+  product-services:
+    build: ./product-services
+    ports:
+      - "6001:6001"
+    networks:
+      - my-network
+
+  api-gateway:
+    build: ./api-gateway
+    ports:
+      - "3000:3000"
+    depends_on:
+      - user-services
+      - product-services
+    networks:
+      - my-network
+
+networks:
+  my-network:
+    driver: bridge
