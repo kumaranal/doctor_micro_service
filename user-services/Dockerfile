@@ -2,7 +2,7 @@
 FROM node:18
 
 # Set working directory
-WORKDIR /src/server.ts
+WORKDIR /app
 
 # Copy package.json and install dependencies
 COPY package.json package-lock.json ./
